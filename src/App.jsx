@@ -1,12 +1,14 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Vans from './pages/Vans';
-import VanDetails from './pages/VanDetails';
+import VanDetail from './pages/VanDetail';
 import Layout from './components/Layout';
 import Income from './pages/Host/Income';
 import Reviews from './pages/Host/Reviews';
 import Dashboard from './pages/Host/Dashboard';
 import HostLayout from './components/HostLayout';
+import HostVans from './pages/Host/HostVans';
+import HostVanDetail from './pages/Host/HostVansDetail';
 
 const App = () => {
 
@@ -22,12 +24,14 @@ const App = () => {
             <Route path='about' element={<About />} />
             <Route path='host' element={<HostLayout />}>
               <Route element={<Dashboard />} index />
+              <Route path='vans' element={<HostVans />} />
+              <Route path='vans/:id' element={<HostVanDetail />} />
               <Route path='income' element={<Income />} />
               <Route path='reviews' element={<Reviews />} />
             </Route>
             <Route path="vans">
               <Route index element={<Vans />} />
-              <Route path=':id' element={<VanDetails />} />
+              <Route path=':id' element={<VanDetail />} />
             </Route>
           </Route>
         </Routes>

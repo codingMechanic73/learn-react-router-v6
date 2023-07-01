@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useGetVan } from "../api/vans";
 
-const VanDetails = () => {
+const VanDetail = () => {
     const { id } = useParams();
     const [van, loading, error] = useGetVan(id)
 
@@ -13,4 +13,4 @@ const VanDetails = () => {
     )
 }
 
-export default VanDetails;
+export default VanDetail;

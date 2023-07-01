@@ -1,12 +1,13 @@
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom';
 
 const Header = () => {
     return (
         <header>
             <Link className="site-logo" to="/">#VanLife</Link>
             <nav>
-                <Link to="host">Hosts</Link>
-                <Link to="about">About</Link>
+                <NavLink to="host" className={({ isActive }) => isActive ? "active-style" : null}>Hosts</NavLink>
+                <NavLink to="about" className={({ isActive }) => isActive ? "active-style" : null}>About</NavLink>
+                <NavLink to="vans" className={({ isActive }) => isActive ? "active-style" : null}>Vans</NavLink>
             </nav>
         </header>
     )

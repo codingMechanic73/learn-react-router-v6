@@ -5,7 +5,7 @@ export const useGetAllVans = () => {
 
     const [data, setData] = useState([]);
     const [error, setError] = useState("");
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
 
@@ -13,7 +13,7 @@ export const useGetAllVans = () => {
         const signal = controller.signal;
 
         (async () => {
-            setLoading(true)
+            setLoading(true);
             try {
                 const response = await fetch("/api/vans", { signal });
                 const json = await response.json();
@@ -21,7 +21,7 @@ export const useGetAllVans = () => {
             } catch (err) {
                 setError(err);
             }
-            setLoading(false)
+            setLoading(false);
         })();
 
 
@@ -36,7 +36,7 @@ export const useGetAllVans = () => {
 export const useGetVan = (id) => {
     const [data, setData] = useState([]);
     const [error, setError] = useState("");
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
 
@@ -60,6 +60,37 @@ export const useGetVan = (id) => {
             controller.abort();
         }
     }, [id])
+
+    return [data, loading, error];
+}
+
+export const useGetHostVans = () => {
+
+    const [data, setData] = useState([]);
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        (async () => {
+            setLoading(true);
+            try {
+                const response = await fetch("/api/host/vans", { signal });
+                const json = await response.json();
+
+                setData(json);
+            } catch (err) {
+                setError(err);
+            }
+            setLoading(false);
+        })();
+
+        return () => {
+            controller.abort();
+        }
+    }, []);
 
     return [data, loading, error];
 }
