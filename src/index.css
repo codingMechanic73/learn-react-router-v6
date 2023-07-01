@@ -191,7 +191,7 @@ footer {
 
 .van-list-filter-buttons {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .van-list-filter-buttons>a {
@@ -331,6 +331,8 @@ i[class*='van-type-'] {
 .host-nav {
   display: flex;
   margin-bottom: 30px;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
 .host-nav a {
@@ -478,4 +480,8 @@ i[class*='van-type-'] {
   font-weight: bold;
   text-decoration: underline;
   color: #161616;
+}
+
+.scrollable {
+  /* overflow-x: auto; */
 }
