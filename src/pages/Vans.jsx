@@ -30,15 +30,15 @@ const Vans = () => {
 
             <h1>Explore our van options</h1>
             <div className='van-list-filter-buttons scrollable'>
-                <Link className='van-type simple' to="?type=simple">Simple</Link>
-                <Link className='van-type rugged' to="?type=rugged">Rugged</Link>
-                <Link className='van-type luxury' to="?type=luxury">Luxury</Link>
-                <Link className='van-type clear-filters' to="">Clear Filters</Link>
+                <button className={`van-type simple ${typeFilter === "simple" ? 'selected' : ''}`} onClick={() => { setSearchParams({ type: "simple" }) }}>Simple</button>
+                <button className={`van-type rugged ${typeFilter === "rugged" ? 'selected' : ''}`} onClick={() => { setSearchParams({ type: "rugged" }) }}>Rugged</button>
+                <button className={`van-type luxury ${typeFilter === "luxury" ? 'selected' : ''}`} onClick={() => { setSearchParams({ type: "luxury" }) }}>Luxury</button>
+                {typeFilter && <button className='van-type clear-filters' onClick={() => { setSearchParams({}) }}>Clear Filters</button>}
             </div>
             <div className='van-list'>
                 {!loading && filteredVans?.map(van => <Van key={van.id} van={van} />)}
             </div>
-        </div>
+        </div >
     )
 }
 
