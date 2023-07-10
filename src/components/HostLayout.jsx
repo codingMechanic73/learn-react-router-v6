@@ -1,5 +1,10 @@
 import { Outlet, NavLink } from "react-router-dom";
 
+export function loader() {
+    console.log("hello")
+    return "hlloe";
+}
+
 const HostLayout = () => {
 
     const activeStyle = {
